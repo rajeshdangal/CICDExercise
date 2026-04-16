@@ -16,12 +16,57 @@ Error: expect(locator).toBeVisible() failed
 
 Locator: getByRole('heading', { name: 'charizard' })
 Expected: visible
+Timeout: 5000ms
 Error: element(s) not found
 
 Call log:
   - Expect "toBeVisible" with timeout 5000ms
   - waiting for getByRole('heading', { name: 'charizard' })
 
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "Previous" [ref=e4] [cursor=pointer]:
+        - /url: /pokemon/charmeleon
+      - link "Home" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - link "Next" [ref=e6] [cursor=pointer]:
+        - /url: /pokemon/squirtle
+    - generic [ref=e9]:
+      - generic [ref=e10]: charizard
+      - table [ref=e12]:
+        - rowgroup [ref=e13]:
+          - row "speed 100" [ref=e14]:
+            - cell "speed" [ref=e15]
+            - cell "100" [ref=e16]
+          - row "special defense 85" [ref=e17]:
+            - cell "special defense" [ref=e18]
+            - cell "85" [ref=e19]
+          - row "special attack 109" [ref=e20]:
+            - cell "special attack" [ref=e21]
+            - cell "109" [ref=e22]
+          - row "defense 78" [ref=e23]:
+            - cell "defense" [ref=e24]
+            - cell "78" [ref=e25]
+          - row "attack 84" [ref=e26]:
+            - cell "attack" [ref=e27]
+            - cell "84" [ref=e28]
+          - row "hp 78" [ref=e29]:
+            - cell "hp" [ref=e30]
+            - cell "78" [ref=e31]
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Hidden ability
+          - generic [ref=e35]: blaze
+        - generic [ref=e36]:
+          - generic [ref=e37]: Hidden ability
+          - generic [ref=e38]: solar power
+  - contentinfo [ref=e39]: Pokémon and Pokémon character names are trademarks of Nintendo.
 ```
 
 # Test source
