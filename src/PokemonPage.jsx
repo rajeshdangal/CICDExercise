@@ -21,23 +21,29 @@ const PokemonPage = ({ previous, next }) => {
     return <ErrorMessage error={error} />
   }
 
-  const { type } = pokemon.types.find((type) => type.slot === 1)
+  if (!pokemon) {
+    return <div>Loading Pokemon data...</div>
+  }
+
+  const primaryType = pokemon.types && pokemon.types.length > 0
+    ? pokemon.types.find((type) => type.slot === 1)
+    : null
+  const type = primaryType || { name: 'normal' }
 
   const stats = pokemon.stats
-    .map((stat) => ({
+    ? pokemon.stats.map((stat) => ({
       name: formatName(stat.stat.name),
       value: stat.base_stat
-    }))
-    .reverse()
+    })).reverse()
+    : []
 
-  const normalAbility = pokemon.abilities.find(
-    (ability) => !ability.is_hidden
-  )
+  const normalAbility = pokemon.abilities
+    ? pokemon.abilities.find((ability) => !ability.is_hidden)
+    : null
 
-  const hiddenAbility = pokemon.abilities.find(
-    (ability) => ability.is_hidden === true
-  )
-
+  const hiddenAbility = pokemon.abilities
+    ? pokemon.abilities.find((ability) => ability.is_hidden === true)
+    : null
 
   console.log('hiddenAbility=', hiddenAbility)
 
@@ -59,12 +65,12 @@ const PokemonPage = ({ previous, next }) => {
         <div
           className="pokemon-image"
           style={{
-            backgroundImage: `url(${pokemon.sprites.front_default})`
+            backgroundImage: `url(${pokemon.sprites?.front_default || ''})`
           }}
         />
 
         <div className="pokemon-info">
-          <div className="pokemon-name">{pokemon.name}</div>
+          <h1 className="pokemon-name">{pokemon.name}</h1>
 
           <div className="pokemon-stats" data-testid="stats">
             <table>
@@ -83,12 +89,14 @@ const PokemonPage = ({ previous, next }) => {
             {normalAbility && (
               <PokemonAbility
                 abilityName={formatName(normalAbility.ability.name)}
+                isHidden={false}
               />
             )}
 
             {hiddenAbility && (
               <PokemonAbility
                 abilityName={formatName(hiddenAbility.ability.name)}
+                isHidden={true}
               />
             )}
           </div>
