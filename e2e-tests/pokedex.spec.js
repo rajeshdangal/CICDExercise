@@ -30,7 +30,6 @@ test('can navigate between pokemon pages', async ({ page }) => {
   await page.goto('/pokemon/charizard')
   await page.waitForLoadState('networkidle')
   await expect(page.getByRole('heading', { name: 'charizard' })).toBeVisible({ timeout: 10000 })
-  
   const nextLink = page.getByText('Next')
   if (await nextLink.isVisible()) {
     await nextLink.click()
