@@ -22,3 +22,9 @@ jobs:
 
       - name: Check style
         run: npm run eslint
+
+      - name: check test
+        run: npm test
+
+      - name: check e2e
+        run: npm run test:e2e
