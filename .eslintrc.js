@@ -3,7 +3,11 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    "jest/globals": true
+    jest: true
+  },
+  globals: {
+    require: 'readonly',
+    global: 'readonly'
   },
   extends: [
     "eslint:recommended",
