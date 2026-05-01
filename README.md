@@ -13,6 +13,6 @@ Start by running `npm install` inside the project folder
 `npm run start-prod` to run your production build
 
 
-render deployed URL : "https://cicdexercise.onrender.com"
+render deployed URL : "https://cicdexercise-6f04.onrender.com/"
 
 This is for pr assignment.
